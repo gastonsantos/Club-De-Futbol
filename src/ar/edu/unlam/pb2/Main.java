@@ -17,9 +17,10 @@ public class Main {
 		
 		equipo1.PresupuestoDelClub(presupuesto1);
 		equipo1.ListaDeJugadoresSinRepetidos();
-		equipo1.MuestroListaJugadores();
-		equipo1.SumaDeSueldosDeJugadores();
-		equipo1.FinanzasDelClub();
+		//equipo1.MuestroListaJugadores();
+		equipo1.NombreEnMayuscula();
+		//equipo1.SumaDeSueldosDeJugadores();
+		//equipo1.FinanzasDelClub();
 		
 		
 		

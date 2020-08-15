@@ -25,7 +25,7 @@ public class Equipo {
 
 
 	private ArrayList<Jugadores> listaJugadores = new  ArrayList<Jugadores>();
-	HashSet <Jugadores> ListaJugadoreSinRepetidos = new HashSet<>();
+	private HashSet <Jugadores> ListaJugadoreSinRepetidos = new HashSet<Jugadores>();
 	
 	
 	private ArrayList<CuerpoTecnico> listaCuerpoTecnico = new  ArrayList<CuerpoTecnico>();
@@ -53,6 +53,7 @@ public class Equipo {
 		if(topeJugadores>=listaJugadores.size()){
 			
 			listaJugadores.add(jugador1);
+			
 			return true;
 		}else{
 			return false;
@@ -103,15 +104,24 @@ public void MuestroListaJugadores(){
 }
 //Mostrar Lista De  Jugadores sin Repetidos
 public void ListaDeJugadoresSinRepetidos() {
+	System.out.println("JUGADORES\n");
 	
-	listaJugadores.addAll(ListaJugadoreSinRepetidos);
-	
+	//listaJugadores.addAll(ListaJugadoreSinRepetidos);
+	ListaJugadoreSinRepetidos.addAll(listaJugadores);
 	for(Jugadores e: ListaJugadoreSinRepetidos) {
 		
 		System.out.println(e.getApellido()+" "+e.getNombre()+"\n");
 	}
 }
+//Muesto Todos los Nombres de Jugadore en MAYUSCULA
 
+public void NombreEnMayuscula(){
+	
+	for(Jugadores e :listaJugadores){
+		System.out.println(e.getApellido().toUpperCase()+ " "+e.getNombre().toUpperCase()+"\n");
+		
+	}
+}
 
 
 	//Metodos Entrenadores
@@ -148,6 +158,14 @@ public void ListaDeJugadoresSinRepetidos() {
 	}
 	
 	
+	public HashSet<Jugadores> getListaJugadoreSinRepetidos() {
+		return ListaJugadoreSinRepetidos;
+	}
+
+	public void setListaJugadoreSinRepetidos(HashSet<Jugadores> listaJugadoreSinRepetidos) {
+		ListaJugadoreSinRepetidos = listaJugadoreSinRepetidos;
+	}
+
 	//Presupuesto
 	public Double PresupuestoDelClub(Presupuesto presupuesto1){
 		sumaPresupuesto = presupuesto1.getIngresoMarketing()+presupuesto1.getIngresoTV()+presupuesto1.getSponsors()+presupuesto1.getTickets();
