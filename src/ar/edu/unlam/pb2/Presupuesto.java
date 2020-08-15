@@ -41,6 +41,13 @@ public Double getIngresoMarketing() {
 public void setIngresoMarketing(Double ingresoMarketing) {
 	IngresoMarketing = ingresoMarketing;
 }
+@Override
+public String toString() {
+	return "Presupuesto [Sponsors=" + Sponsors + ", tickets=" + tickets + ", IngresoTV=" + IngresoTV
+			+ ", IngresoMarketing=" + IngresoMarketing + "]";
+}
+
+
 
 
 	
