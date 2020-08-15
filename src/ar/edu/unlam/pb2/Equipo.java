@@ -3,6 +3,22 @@ package ar.edu.unlam.pb2;
 import java.util.ArrayList;
 
 public class Equipo {
+	private String nombreEquipo;
+	
+	public String getNombreEquipo() {
+		return nombreEquipo;
+	}
+
+	public void setNombreEquipo(String nombreEquipo) {
+		this.nombreEquipo = nombreEquipo;
+	}
+
+	public Equipo(String nombreEquipo) {
+	
+		this.nombreEquipo = nombreEquipo;
+	}
+
+
 	private ArrayList<Jugadores> listaJugadores = new  ArrayList<Jugadores>();
 	private ArrayList<CuerpoTecnico> listaCuerpoTecnico = new  ArrayList<CuerpoTecnico>();
 	private Integer contadorJugadores = 0;
@@ -27,7 +43,7 @@ public class Equipo {
 	
 	//Agrego Jugador mientras que tengo menos de 23
 	public Boolean AgregoJugador(Jugadores jugador1){
-		if(topeJugadores<=listaJugadores.size()){
+		if(topeJugadores>=listaJugadores.size()){
 			
 			listaJugadores.add(jugador1);
 			return true;
