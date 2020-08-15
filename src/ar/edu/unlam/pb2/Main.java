@@ -13,6 +13,7 @@ public class Main {
 		
 		equipo1.ContadorJugadores();
 		equipo1.MuestroListaJugadores();
+		equipo1.SumaDeSueldosDeJugadores();
 	
 
 	}

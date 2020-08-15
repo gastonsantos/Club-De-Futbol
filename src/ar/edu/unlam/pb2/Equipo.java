@@ -67,12 +67,14 @@ public class Equipo {
 	}
 	//SUMo los Sueldo De los Jugadores
 	
-public Double SumaDeSueldosDeJugadores(Jugadores jugador1){
+public Double SumaDeSueldosDeJugadores(){
 		
 		for(Jugadores e: listaJugadores){
-			sumaSueldoJugadores= e.getSueldo();
+			sumaSueldoJugadores+= e.getSueldo();
 		}
+		System.out.println("El sueldo TOTAl de los Jugadores es: $"+sumaSueldoJugadores);
 		return sumaSueldoJugadores;
+		
 		
 	}
 	
