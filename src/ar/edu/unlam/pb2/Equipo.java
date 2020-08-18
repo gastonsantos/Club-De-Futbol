@@ -89,22 +89,33 @@ public Double SumaDeSueldosDeJugadores(){
 		
 	}
 	
+//Mostrar Jugadores
+public void MostrarListaDeJugadores() {
 	
+	for(Jugadores e: listaJugadores) {
+		System.out.println(e.getApellido()+" "+e.getNombre()+" "+"Sueldo: "+e.getSueldo()+"\n");
+	}
+}
 
-//Mostrar Lista De jugadores por Pantalla ORDENADA ALFABETICAMENTE
+// ORDENADA ALFABETICAMENTE
 
 
-public void MuestroListaJugadores(){
+public void OrdenoListaJugadoresPorNombre(){
 	System.out.println("PLANTEL:\n");
 	Collections.sort(listaJugadores, Comparator.comparing(Jugadores::getApellido));
 	
-	
-	for(Jugadores e: listaJugadores){
-	
-		System.out.println(e.getApellido()+" "+e.getNombre()+"\n");
 		
-	}
+	
 }
+
+//Ordenar por POSICION
+//Ordenar por Sueldo
+public void OrdenarListaDeJugadoresPorSueldo() {
+	
+	Collections.sort(listaJugadores, Comparator.comparing(Jugadores::getSueldo));
+	
+}
+
 // Lista De  Jugadores sin Repetidos
 public void ListaDeJugadoresSinRepetidos() {
 	//System.out.println("JUGADORES\n");
