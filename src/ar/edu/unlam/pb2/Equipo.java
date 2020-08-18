@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
+import java.util.Scanner;
 
 
 public class Equipo {
@@ -34,9 +35,11 @@ public class Equipo {
 	static Integer topeJugadores=23;
 	static Integer topeCuerpoTecnico=6;
 	private Double sumaSueldoJugadores =0.0; 
-    private Double sumaPresupuesto=0.0;
+   
+    private Boolean bandera = false;
+	private Scanner s;
 	
-    //private Presupuesto presupuesto1;
+   
 	
 	
 	
@@ -102,16 +105,59 @@ public void MuestroListaJugadores(){
 		
 	}
 }
-//Mostrar Lista De  Jugadores sin Repetidos
+// Lista De  Jugadores sin Repetidos
 public void ListaDeJugadoresSinRepetidos() {
-	System.out.println("JUGADORES\n");
+	//System.out.println("JUGADORES\n");
 	
-	//listaJugadores.addAll(ListaJugadoreSinRepetidos);
+	
 	ListaJugadoreSinRepetidos.addAll(listaJugadores);
-	for(Jugadores e: ListaJugadoreSinRepetidos) {
+	
+}
+
+//Cuenta LOS JUGADORES DE LA LISTA SIN REPETDDOS
+
+public Integer ContadorDeListaSinRepetidos() {
+	return ListaJugadoreSinRepetidos.size();
+	
+}
+
+
+//Muestra Lista De Jugadores Sin repetudos
+public void MostrarListaDeJugadoresSinRepetir() {
+for(Jugadores e: ListaJugadoreSinRepetidos) {
 		
 		System.out.println(e.getApellido()+" "+e.getNombre()+"\n");
 	}
+	
+}
+
+
+
+
+//Buscar Jugador
+
+public Boolean BuscarJugador(String jugador1) {
+
+	s = new Scanner(System.in);
+	for(Jugadores e :ListaJugadoreSinRepetidos ) {
+		
+		if(e.getApellido()==jugador1) {
+			
+			e.setApellido(s.nextLine());
+			bandera = true;
+			
+	}else {
+		
+		bandera = false;
+	}
+		
+	}
+	if(bandera==true) {
+		System.out.println("El jugador  SE encuentra Inscripto");
+	}else {
+		System.out.println("El jugador  NO se encuentra Inscripto");
+	}
+	return bandera;
 }
 //Muesto Todos los Nombres de Jugadore en MAYUSCULA
 
@@ -166,14 +212,10 @@ public void NombreEnMayuscula(){
 		ListaJugadoreSinRepetidos = listaJugadoreSinRepetidos;
 	}
 
-	//Presupuesto
-	public Double PresupuestoDelClub(Presupuesto presupuesto1){
-		sumaPresupuesto = presupuesto1.getIngresoMarketing()+presupuesto1.getIngresoTV()+presupuesto1.getSponsors()+presupuesto1.getTickets();
-		return sumaPresupuesto;
-	}
+	
 	//Finanzas
-	public Double FinanzasDelClub() {
-		finanzas=  sumaPresupuesto-sumaSueldoJugadores; 
+	public Double FinanzasDelClub(Presupuesto presupuesto1) {
+		finanzas=  presupuesto1.getSumaPresupuesto()-sumaSueldoJugadores; 
 		
 		System.out.println("Las Finanzas SON: $"+finanzas);
 		return finanzas;

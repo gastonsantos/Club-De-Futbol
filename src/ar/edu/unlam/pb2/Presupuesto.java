@@ -5,9 +5,15 @@ private Double Sponsors;
 private Double tickets;
 private Double IngresoTV;
 private Double IngresoMarketing;
+private Double sumaPresupuesto=0.0;
 
 
-
+public void setSumaPresupuesto(Double sumaPresupuesto) {
+	this.sumaPresupuesto = sumaPresupuesto;
+}
+public Double getSumaPresupuesto() {
+	return sumaPresupuesto;
+}
 //Constructor
 public Presupuesto(Double sponsors, Double tickets, Double ingresoTV, Double ingresoMarketing) {
 	
@@ -48,6 +54,13 @@ public String toString() {
 }
 
 
+
+
+public Double SumaDePresupuesto() {
+	
+	sumaPresupuesto= Sponsors+tickets+IngresoTV+IngresoMarketing;
+	return sumaPresupuesto;
+}
 
 
 	
