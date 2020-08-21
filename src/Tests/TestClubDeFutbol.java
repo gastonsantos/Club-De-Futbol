@@ -73,8 +73,38 @@ public class TestClubDeFutbol {
 		assertEquals(valorEsperado, valorObtenido);
 	}
 	
-	
-	
-	
+	@Test
+	public void TestQueBuscaJugadorCorrectamente() {
+		Equipo equipo1 = new Equipo("Los perdedores");
+		Jugadores jugador1 = new Jugadores("Gaston", "Santos", 1000.0, 33, "LI", "zurdo");
+		Jugadores jugador2 = new Jugadores("Juan", "Pergamino", 1500.0, 5, "Mi", "Derecho");
+		Jugadores jugador3 = new Jugadores("Gaston", "Santosa", 1000.0, 33, "LI", "zurdo");
+		
+		equipo1.AgregoJugador(jugador1);
+		equipo1.AgregoJugador(jugador2);
+		equipo1.AgregoJugador(jugador3);
+		equipo1.ListaDeJugadoresSinRepetidos();
+		
+		
+		assertTrue(equipo1.BuscarJugador("Santosa"));
+		
+	}
+	@Test
+	public void TestQueBuscaJugadorCorrectamenteConEquals() {
+		Equipo equipo1 = new Equipo("Los perdedores");
+		Jugadores jugador1 = new Jugadores("Gaston", "Santos", 1000.0, 33, "LI", "zurdo");
+		Jugadores jugador2 = new Jugadores("Juan", "Pergamino", 1500.0, 5, "Mi", "Derecho");
+		Jugadores jugador3 = new Jugadores("Gaston", "Santosa", 1000.0, 33, "LI", "zurdo");
+		
+		equipo1.AgregoJugador(jugador1);
+		equipo1.AgregoJugador(jugador2);
+		equipo1.AgregoJugador(jugador3);
+		equipo1.ListaDeJugadoresSinRepetidos();
+		
+		
+		assertTrue(equipo1.BuscarJugadorConEquals("Santos"));
+		
+	}
 
 }
+
