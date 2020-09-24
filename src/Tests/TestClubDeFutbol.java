@@ -105,6 +105,42 @@ public class TestClubDeFutbol {
 		assertTrue(equipo1.BuscarJugadorConEquals("Santos"));
 		
 	}
+	
+	@Test
+	public void TestQueSumaSueldoDeCuerpoTecnico() {
+		
+		Equipo equipo1 = new Equipo ("Los PAPACHULOS");
+		CuerpoTecnico tecnico1 = new CuerpoTecnico("Julio", "Falcioni", 300.00, 56,"DIRECTOR TECNICO");
+		CuerpoTecnico tecnico2 = new CuerpoTecnico("Perez", "Acuña", 350.00, 66,"DIRECTOR DEPORTIVO");
+		equipo1.AgregarIntegranteDeCT(tecnico1);
+		equipo1.AgregarIntegranteDeCT(tecnico2);
+		Double valorEsperado= 650.00;
+		Double valorObtenido = equipo1.sumoSueldoCuerpoTecnico();
+		assertEquals(valorEsperado, valorObtenido, 0.1);
+	}
+	
+	@Test
+	public void TestQueNoMePasoDePresupuestoEquipo() {
+		Equipo equipo1 = new Equipo ("Los PAPACHULOS");
+		Jugadores jugador1 = new Jugadores("Gaston", "Santos", 1000.0, 33, "LI", "zurdo");
+		Jugadores jugador2 = new Jugadores("Juan", "Pergamino", 1000.0, 5, "Mi", "Derecho");
+		Jugadores jugador3 = new Jugadores("Gaston", "Santosa", 1000.0, 33, "LI", "zurdo");
+		CuerpoTecnico tecnico1 = new CuerpoTecnico("Julio", "Falcioni", 1000.00, 56,"DIRECTOR TECNICO");
+		CuerpoTecnico tecnico2 = new CuerpoTecnico("Perez", "Acuña", 500.00, 66,"DIRECTOR DEPORTIVO");
+		equipo1.AgregarIntegranteDeCT(tecnico1);
+		equipo1.AgregarIntegranteDeCT(tecnico2);
+		equipo1.AgregoJugador(jugador1);
+		equipo1.AgregoJugador(jugador2);
+		equipo1.AgregoJugador(jugador3);
+		Presupuesto presupuesto1 = new Presupuesto (200.00,500.00,340.0,600.00);
+		equipo1.SumaDeSueldosDeJugadores();
+		equipo1.sumoSueldoCuerpoTecnico();
+		presupuesto1.SumaDePresupuesto();
+		Double valorEsperado = -2860.00;
+		Double valorObtenido= equipo1.FinanzasDelClub(presupuesto1);
+		
+		assertEquals(valorEsperado, valorObtenido, 0.1);
+	}
 
 }
 

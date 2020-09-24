@@ -6,7 +6,6 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Scanner;
 
-import javax.swing.JOptionPane;
 
 
 public class Equipo {
@@ -36,7 +35,9 @@ public class Equipo {
 	private Integer contadorEntrenadores = 0;
 	static Integer topeJugadores=23;
 	static Integer topeCuerpoTecnico=6;
-	private Double sumaSueldoJugadores =0.0; 
+	
+	private Double sumaSueldoJugadores =0.0;
+	private Double sumaSueldoCuerpoTecnico = 0.0;
    
    private Boolean bandera=false;
 	private Scanner s;
@@ -59,7 +60,7 @@ public class Equipo {
 	
 		
 		public Boolean AgregoJugador(Jugadores jugador1){
-			try {
+			
 			if(topeJugadores>=listaJugadores.size()){
 				
 				listaJugadores.add(jugador1);
@@ -69,27 +70,14 @@ public class Equipo {
 				return false;
 				
 			}
-		
-		}
-		catch(Exception e){
-			
-			System.out.println("Se ah producido un error");
-			return null;
-		}
+
 	}
 
 	//Elimino Un Jugador
 	public void EliminoJugador(Jugadores jugador1){
-		try {
+		
 			
 			listaJugadores.remove(jugador1);
-		}catch (Exception e) {
-			System.out.println("Se ah producido un error");
-			
-		}
-		
-		
-	
 	}
 	
 	//Cuento La cantidad De jugadores que tengo Inscriptos
@@ -185,6 +173,8 @@ public Boolean BuscarJugador(String jugador1) {
 	}
 	return bandera;
 	}
+
+//Buscar Jugador Con MEtodo Equals
 public Boolean BuscarJugadorConEquals(String jugador1) {
 	boolean bandera = false;
 	for(Jugadores e: ListaJugadoreSinRepetidos) {
@@ -216,13 +206,13 @@ public void NombreEnMayuscula(){
 }
 
 
-	//Metodos Entrenadores
+	//Metodos Cuerpo TEcnicos
 	
-	//Agrego Entrenador
+	//Agrego Integrante Cuerpo Tecnico
 	
 	public Boolean AgregarIntegranteDeCT(CuerpoTecnico CT1){
 		
-		if(topeCuerpoTecnico<=listaCuerpoTecnico.size()){
+		if(topeCuerpoTecnico>=listaCuerpoTecnico.size()){
 			
 			listaCuerpoTecnico.add(CT1);
 			return true;
@@ -233,7 +223,7 @@ public void NombreEnMayuscula(){
 		}
 		
 	}
-
+	
 	
 	//cuento Cantidad de Integrandes de Cuerpo tecnico Tengo
 	
@@ -248,7 +238,17 @@ public void NombreEnMayuscula(){
 		listaCuerpoTecnico.remove(CT1);
 		
 	}
+	//SUMO SUELDO CUERPO TECNICO
 	
+	public Double sumoSueldoCuerpoTecnico() {
+		
+		for(CuerpoTecnico e: listaCuerpoTecnico) {
+			sumaSueldoCuerpoTecnico+= e.getSueldo();
+			
+		}
+		System.out.println(sumaSueldoCuerpoTecnico);
+		return sumaSueldoCuerpoTecnico;
+	}
 	
 	public HashSet<Jugadores> getListaJugadoreSinRepetidos() {
 		return ListaJugadoreSinRepetidos;
@@ -261,10 +261,20 @@ public void NombreEnMayuscula(){
 	
 	//Finanzas
 	public Double FinanzasDelClub(Presupuesto presupuesto1) {
-		finanzas=  presupuesto1.getSumaPresupuesto()-sumaSueldoJugadores; 
 		
-		System.out.println("Las Finanzas SON: $"+finanzas);
+		finanzas=  presupuesto1.getSumaPresupuesto() - sumaSueldoJugadores-sumaSueldoCuerpoTecnico; 
+		
+		System.out.println(finanzas);
 		return finanzas;
+	}
+	
+	public Boolean bancaRota() {
+		if(finanzas>=0 ) {
+			return true;
+		}else {
+			return false;
+		}
+		
 	}
 	
 	
