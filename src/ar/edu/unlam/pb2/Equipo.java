@@ -4,13 +4,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
-import java.util.Scanner;
+
 
 
 
 public class Equipo {
 	private String nombreEquipo;
-	private Double finanzas= 0.0; 
+	private Double finanzas; 
+	private Integer topeJugadores;
+	private Integer topeCuerpoTecnico;
+	
+	private Double sumaSueldoJugadores;
+	private Double sumaSueldoCuerpoTecnico ;
 	
 	public String getNombreEquipo() {
 		return nombreEquipo;
@@ -23,29 +28,22 @@ public class Equipo {
 	public Equipo(String nombreEquipo) {
 	
 		this.nombreEquipo = nombreEquipo;
+		finanzas=0.0;
+		topeJugadores= 23;
+		topeCuerpoTecnico = 6;
+		sumaSueldoJugadores = 0.0;
+		sumaSueldoCuerpoTecnico= 0.0;
+		
+		
 	}
 
 
 	private ArrayList<Jugadores> listaJugadores = new  ArrayList<Jugadores>();
 	private HashSet <Jugadores> ListaJugadoreSinRepetidos = new HashSet<Jugadores>();
-	
-	
 	private ArrayList<CuerpoTecnico> listaCuerpoTecnico = new  ArrayList<CuerpoTecnico>();
-	private Integer contadorJugadores = 0;
-	private Integer contadorEntrenadores = 0;
-	static Integer topeJugadores=23;
-	static Integer topeCuerpoTecnico=6;
-	
-	private Double sumaSueldoJugadores =0.0;
-	private Double sumaSueldoCuerpoTecnico = 0.0;
-   
-   private Boolean bandera=false;
-	private Scanner s;
 	
 	
-   
-	
-	
+
 	
 	//Constructor Del ArrayList
 	public Equipo(ArrayList<Jugadores> listaJugadores, ArrayList<CuerpoTecnico> listaCuerpoTecnico) {
@@ -57,8 +55,6 @@ public class Equipo {
 	
 	//Agrego Jugador mientras que tengo menos de 23
 	
-	
-		
 		public Boolean AgregoJugador(Jugadores jugador1){
 			
 			if(topeJugadores>=listaJugadores.size()){
@@ -82,8 +78,8 @@ public class Equipo {
 	
 	//Cuento La cantidad De jugadores que tengo Inscriptos
 	public Integer ContadorJugadores(){
-		contadorJugadores = listaJugadores.size();
-		return contadorJugadores;
+		return  listaJugadores.size();
+		
 	}
 	//SUMo los Sueldo De los Jugadores
 	
@@ -108,7 +104,6 @@ public void MostrarListaDeJugadores() {
 
 // ORDENADA ALFABETICAMENTE
 
-
 public void OrdenoListaJugadoresPorNombre(){
 	System.out.println("PLANTEL:\n");
 	Collections.sort(listaJugadores, Comparator.comparing(Jugadores::getApellido));
@@ -117,7 +112,6 @@ public void OrdenoListaJugadoresPorNombre(){
 	
 }
 
-//Ordenar por POSICION
 //Ordenar por Sueldo
 public void OrdenarListaDeJugadoresPorSueldo() {
 	
@@ -127,7 +121,6 @@ public void OrdenarListaDeJugadoresPorSueldo() {
 
 // Lista De  Jugadores sin Repetidos
 public void ListaDeJugadoresSinRepetidos() {
-	//System.out.println("JUGADORES\n");
 	
 	
 	ListaJugadoreSinRepetidos.addAll(listaJugadores);
@@ -153,29 +146,10 @@ for(Jugadores e: ListaJugadoreSinRepetidos) {
   
 
 
-//Buscar Jugador
 
-public Boolean BuscarJugador(String jugador1) {
-	//s = new Scanner(System.in);
-	for(Jugadores e :ListaJugadoreSinRepetidos ) {
-		if(e.getApellido()==jugador1) {
-			//e.setApellido(s.nextLine());
-			bandera = true;
-			break;
-	}else {	
-		bandera = false;
-	}	  
-	}
-	if(bandera==true) {
-		System.out.println("El jugador  SE encuentra Inscripto");
-	}else {
-		System.out.println("El jugador  NO se encuentra Inscripto");
-	}
-	return bandera;
-	}
 
 //Buscar Jugador Con MEtodo Equals
-public Boolean BuscarJugadorConEquals(String jugador1) {
+public Boolean BuscarJugador(String jugador1) {
 	boolean bandera = false;
 	for(Jugadores e: ListaJugadoreSinRepetidos) {
 		if(e.getApellido().contentEquals(jugador1)==true){
@@ -188,11 +162,6 @@ public Boolean BuscarJugadorConEquals(String jugador1) {
 	return bandera;
 	
 }
-
-
-
-
-
 
 
 //Muesto Todos los Nombres de Jugadore en MAYUSCULA
@@ -228,8 +197,8 @@ public void NombreEnMayuscula(){
 	//cuento Cantidad de Integrandes de Cuerpo tecnico Tengo
 	
 	public Integer ContadorDeCuerpoTecnico(){
-		contadorEntrenadores = listaCuerpoTecnico.size();
-		return contadorEntrenadores;
+		 
+		return listaCuerpoTecnico.size();
 		
 	}
 	//Elimino Integrande De Cuerpo Tecnico
@@ -262,17 +231,17 @@ public void NombreEnMayuscula(){
 	//Finanzas
 	public Double FinanzasDelClub(Presupuesto presupuesto1) {
 		
-		finanzas=  presupuesto1.getSumaPresupuesto() - sumaSueldoJugadores-sumaSueldoCuerpoTecnico; 
+		finanzas=  presupuesto1.SumaDePresupuesto() - sumaSueldoJugadores-sumaSueldoCuerpoTecnico; 
 		
-		System.out.println(finanzas);
+		
 		return finanzas;
 	}
 	
 	public Boolean bancaRota() {
-		if(finanzas>=0 ) {
-			return true;
-		}else {
+		if(finanzas>=0.0 ) {
 			return false;
+		}else {
+			return true;
 		}
 		
 	}

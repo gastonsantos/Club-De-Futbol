@@ -86,25 +86,20 @@ public class TestClubDeFutbol {
 		equipo1.ListaDeJugadoresSinRepetidos();
 		
 		
-		assertTrue(equipo1.BuscarJugador("Santosa"));
+		assertTrue(equipo1.BuscarJugador("Santos"));
 		
 	}
 	@Test
-	public void TestQueBuscaJugadorCorrectamenteConEquals() {
+	public void TestQueBuscaJugadorYNoEncuentra(){
 		Equipo equipo1 = new Equipo("Los perdedores");
 		Jugadores jugador1 = new Jugadores("Gaston", "Santos", 1000.0, 33, "LI", "zurdo");
 		Jugadores jugador2 = new Jugadores("Juan", "Pergamino", 1500.0, 5, "Mi", "Derecho");
-		Jugadores jugador3 = new Jugadores("Gaston", "Santosa", 1000.0, 33, "LI", "zurdo");
-		
 		equipo1.AgregoJugador(jugador1);
 		equipo1.AgregoJugador(jugador2);
-		equipo1.AgregoJugador(jugador3);
-		equipo1.ListaDeJugadoresSinRepetidos();
-		
-		
-		assertTrue(equipo1.BuscarJugadorConEquals("Santos"));
+		assertFalse(equipo1.BuscarJugador("Guzman"));
 		
 	}
+
 	
 	@Test
 	public void TestQueSumaSueldoDeCuerpoTecnico() {
@@ -120,7 +115,7 @@ public class TestClubDeFutbol {
 	}
 	
 	@Test
-	public void TestQueNoMePasoDePresupuestoEquipo() {
+	public void TestQueCuentaCorrectamenteLasFinanzasDelClub() {
 		Equipo equipo1 = new Equipo ("Los PAPACHULOS");
 		Jugadores jugador1 = new Jugadores("Gaston", "Santos", 1000.0, 33, "LI", "zurdo");
 		Jugadores jugador2 = new Jugadores("Juan", "Pergamino", 1000.0, 5, "Mi", "Derecho");
@@ -141,6 +136,41 @@ public class TestClubDeFutbol {
 		
 		assertEquals(valorEsperado, valorObtenido, 0.1);
 	}
+	@Test
+	public void testQueElCLubEstaEnBancarrota(){
+		Equipo equipo1 = new Equipo ("Los PAPACHULOS");
+		Jugadores jugador1 = new Jugadores("Gaston", "Santos", 1000.0, 33, "LI", "zurdo");
+		Jugadores jugador2 = new Jugadores("Juan", "Pergamino", 1000.0, 5, "Mi", "Derecho");
+		CuerpoTecnico tecnico1 = new CuerpoTecnico("Julio", "Falcioni", 1000.00, 56,"DIRECTOR TECNICO");
+		equipo1.AgregoJugador(jugador1);
+		equipo1.AgregoJugador(jugador2);
+		equipo1.AgregarIntegranteDeCT(tecnico1);
+		Presupuesto presupuesto1 = new Presupuesto (200.00,500.00,340.0,600.00);
+		equipo1.SumaDeSueldosDeJugadores();
+		equipo1.sumoSueldoCuerpoTecnico();
+		presupuesto1.SumaDePresupuesto();
+		equipo1.FinanzasDelClub(presupuesto1);
+		assertTrue(equipo1.bancaRota());
+	}
+	@Test
+	public void testQueElClubNoEstaEnBancarota(){
+		
+		Equipo equipo1 = new Equipo ("Los PAPACHULOS");
+		Jugadores jugador1 = new Jugadores("Gaston", "Santos", 1000.0, 33, "LI", "zurdo");
+		Jugadores jugador2 = new Jugadores("Juan", "Pergamino", 1000.0, 5, "Mi", "Derecho");
+		CuerpoTecnico tecnico1 = new CuerpoTecnico("Julio", "Falcioni", 1000.00, 56,"DIRECTOR TECNICO");
+		equipo1.AgregoJugador(jugador1);
+		equipo1.AgregoJugador(jugador2);
+		equipo1.SumaDeSueldosDeJugadores();
+		equipo1.AgregarIntegranteDeCT(tecnico1);
+		equipo1.sumoSueldoCuerpoTecnico();
+		Presupuesto presupuesto1 = new Presupuesto (200.00,500.00,340.0,600000.00);
+		presupuesto1.SumaDePresupuesto();
+		equipo1.FinanzasDelClub(presupuesto1);
+		
+		assertFalse(equipo1.bancaRota());
+	}
+
 
 }
 
