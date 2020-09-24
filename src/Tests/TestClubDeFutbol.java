@@ -170,6 +170,47 @@ public class TestClubDeFutbol {
 		
 		assertFalse(equipo1.bancaRota());
 	}
+	@Test
+	public void testQueOrdenaJugadoresPorSueldo(){
+		Equipo equipo1 = new Equipo ("Los PAPACHULOS");
+		Jugadores jugador1 = new Jugadores("Gaston", "Santos", 500.0, 33, "LI", "zurdo");
+		Jugadores jugador2 = new Jugadores("Juan", "Pergamino", 1000.0, 5, "Mi", "Derecho");
+		Jugadores jugador3 = new Jugadores("Peron", "Tamino", 200.0, 5, "Mi", "Derecho");
+		equipo1.AgregoJugador(jugador1);
+		equipo1.AgregoJugador(jugador2);
+		equipo1.AgregoJugador(jugador3);
+		equipo1.OrdenarListaDeJugadoresPorSueldo();
+		equipo1.MostrarListaDeJugadores();
+		
+	}
+	@Test
+	public void testQueOrdenaJugadoresPorApellid(){
+		Equipo equipo1 = new Equipo ("Los PAPACHULOS");
+		Jugadores jugador1 = new Jugadores("Gaston", "Santos", 500.0, 33, "LI", "zurdo");
+		Jugadores jugador2 = new Jugadores("Juan", "Aergamino", 1000.0, 5, "Mi", "Derecho");
+		Jugadores jugador3 = new Jugadores("Peron", "Bamino", 200.0, 5, "Mi", "Derecho");
+		equipo1.AgregoJugador(jugador1);
+		equipo1.AgregoJugador(jugador2);
+		equipo1.AgregoJugador(jugador3);
+		equipo1.OrdenoListaJugadoresPorNombre();
+		equipo1.MostrarListaDeJugadores();
+		
+	}
+	@Test
+	public void testQueMuestraListaSinJugadoresRepetidos(){
+		Equipo equipo1 = new Equipo ("Los PAPACHULOS");
+		Jugadores jugador1 = new Jugadores("Gaston", "Santos", 500.0, 33, "LI", "zurdo");
+		Jugadores jugador2 = new Jugadores("Juan", "Aergamino", 1000.0, 5, "Mi", "Derecho");
+		Jugadores jugador3 = new Jugadores("Gaston", "Santos", 200.0, 5, "Mi", "Derecho");
+		equipo1.AgregoJugador(jugador1);
+		equipo1.AgregoJugador(jugador2);
+		equipo1.AgregoJugador(jugador3);
+		equipo1.ListaDeJugadoresSinRepetidos();
+		
+		equipo1.MostrarListaDeJugadoresSinRepetir();
+		
+	}
+	
 
 
 }

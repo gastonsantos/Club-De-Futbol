@@ -88,7 +88,7 @@ public Double SumaDeSueldosDeJugadores(){
 		for(Jugadores e: listaJugadores){
 			sumaSueldoJugadores+= e.getSueldo();
 		}
-		System.out.println("El sueldo TOTAl de los Jugadores es: $"+sumaSueldoJugadores);
+		
 		return sumaSueldoJugadores;
 		
 		
@@ -105,14 +105,12 @@ public void MostrarListaDeJugadores() {
 // ORDENADA ALFABETICAMENTE
 
 public void OrdenoListaJugadoresPorNombre(){
-	System.out.println("PLANTEL:\n");
-	Collections.sort(listaJugadores, Comparator.comparing(Jugadores::getApellido));
 	
-		
+	Collections.sort(listaJugadores, Comparator.comparing(Jugadores::getApellido));
 	
 }
 
-//Ordenar por Sueldo
+//ORDENA POR SUELDO
 public void OrdenarListaDeJugadoresPorSueldo() {
 	
 	Collections.sort(listaJugadores, Comparator.comparing(Jugadores::getSueldo));
@@ -215,20 +213,13 @@ public void NombreEnMayuscula(){
 			sumaSueldoCuerpoTecnico+= e.getSueldo();
 			
 		}
-		System.out.println(sumaSueldoCuerpoTecnico);
 		return sumaSueldoCuerpoTecnico;
 	}
 	
-	public HashSet<Jugadores> getListaJugadoreSinRepetidos() {
-		return ListaJugadoreSinRepetidos;
-	}
 
-	public void setListaJugadoreSinRepetidos(HashSet<Jugadores> listaJugadoreSinRepetidos) {
-		ListaJugadoreSinRepetidos = listaJugadoreSinRepetidos;
-	}
 
 	
-	//Finanzas
+	//FINANZAS
 	public Double FinanzasDelClub(Presupuesto presupuesto1) {
 		
 		finanzas=  presupuesto1.SumaDePresupuesto() - sumaSueldoJugadores-sumaSueldoCuerpoTecnico; 
@@ -236,7 +227,7 @@ public void NombreEnMayuscula(){
 		
 		return finanzas;
 	}
-	
+	//SI EL CLUB ESTA EN BANCA ROTA 
 	public Boolean bancaRota() {
 		if(finanzas>=0.0 ) {
 			return false;
@@ -246,7 +237,13 @@ public void NombreEnMayuscula(){
 		
 	}
 	
-	
+	public HashSet<Jugadores> getListaJugadoreSinRepetidos() {
+		return ListaJugadoreSinRepetidos;
+	}
+
+	public void setListaJugadoreSinRepetidos(HashSet<Jugadores> listaJugadoreSinRepetidos) {
+		ListaJugadoreSinRepetidos = listaJugadoreSinRepetidos;
+	}
 	
 	
 	
