@@ -41,7 +41,7 @@ public class Equipo {
 	private ArrayList<Jugadores> listaJugadores = new  ArrayList<Jugadores>();
 	private HashSet <Jugadores> ListaJugadoreSinRepetidos = new HashSet<Jugadores>();
 	private ArrayList<CuerpoTecnico> listaCuerpoTecnico = new  ArrayList<CuerpoTecnico>();
-	
+	private HashSet <CuerpoTecnico> listaCuerpoTecnicoSinRepetidos= new HashSet<CuerpoTecnico>();
 	
 
 	
@@ -124,6 +124,12 @@ public void ListaDeJugadoresSinRepetidos() {
 	ListaJugadoreSinRepetidos.addAll(listaJugadores);
 	
 }
+//Lista De CUERPO TECNICO SIN REPETIDOS
+public void listaDeCuerpoTecnicoSinRepetidos(){
+	
+	listaCuerpoTecnicoSinRepetidos.addAll(listaCuerpoTecnico);
+}
+
 
 //Cuenta LOS JUGADORES DE LA LISTA SIN REPETDDOS
 
@@ -217,7 +223,18 @@ public void NombreEnMayuscula(){
 	}
 	
 
-
+public void muestroListaCuerpoTecnico(){
+	
+	for(CuerpoTecnico e: listaCuerpoTecnico){
+		System.out.println(e.getApellido()+" "+e.getNombre()+" "+e.getFuncion());
+	}
+}
+public void muestroListaCuerpoTecnicoSinRepetidos(){
+	
+	for(CuerpoTecnico e: listaCuerpoTecnicoSinRepetidos){
+		System.out.println(e.getApellido()+" "+e.getNombre()+" "+e.getFuncion());
+	}
+}
 	
 	//FINANZAS
 	public Double FinanzasDelClub(Presupuesto presupuesto1) {

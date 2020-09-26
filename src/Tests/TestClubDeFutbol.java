@@ -6,7 +6,8 @@ import org.junit.Test;
 
 public class TestClubDeFutbol {
 
-	@Test
+	/*
+	 @Test
 	public void testQueAgregaJugador() {
 		Equipo equipo1 = new Equipo("Los perdedores");
 		Jugadores jugador1 = new Jugadores("Gaston", "Perez", 1000.0, 33, "LI", "zurdo");
@@ -210,8 +211,25 @@ public class TestClubDeFutbol {
 		equipo1.MostrarListaDeJugadoresSinRepetir();
 		
 	}
+	*/
 	
-
-
+@Test
+public void testQueMuestraListaDeCuerpoTecnicoSinRepetidos(){
+	
+	Equipo equipo1 = new Equipo ("Los Pepitos");
+	CuerpoTecnico cuerpo1 = new CuerpoTecnico ("Gaston", "Santos", 40.0, 65, "Director Tecnico");
+	CuerpoTecnico cuerpo2 = new CuerpoTecnico ("Roberto", "Abbondanzzieri", 40.0, 68, "Medico");
+	CuerpoTecnico cuerpo3 = new CuerpoTecnico ("PEPE", "Santos", 40.0, 65, "Director Tecnico");
+	equipo1.AgregarIntegranteDeCT(cuerpo1);
+	equipo1.AgregarIntegranteDeCT(cuerpo2);
+	equipo1.AgregarIntegranteDeCT(cuerpo3);
+	
+	equipo1.listaDeCuerpoTecnicoSinRepetidos();
+	equipo1.muestroListaCuerpoTecnicoSinRepetidos();
 }
+	
+}
+
+
+
 
